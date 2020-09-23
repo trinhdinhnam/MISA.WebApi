@@ -16,8 +16,13 @@ namespace MISA.WEB_API
                
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{name}",
-                defaults: new { name = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{name}"
+                //defaults: new { name = RouteParameter.Optional }
+            );
+            config.Routes.MapHttpRoute(
+                name: "CustomerApi",
+                routeTemplate: "{controller}/{customerId}",
+                defaults: new { customerId = RouteParameter.Optional }
             );
         }
     }

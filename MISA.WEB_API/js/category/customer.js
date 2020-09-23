@@ -1,8 +1,8 @@
 ﻿$(document).ready(function () {
-    var customer = new Customer();
+    var customer = new CustomerJS();
 })
 
-class Customer {
+class CustomerJS {
     constructor() {
         this.loadData();
         this.initEvent();
@@ -14,9 +14,24 @@ class Customer {
     //Hàm load dữ liệu khách hảng
 
     loadData() {
-        $('.grid table tbody').empty();
-        $.each(customers, function (index, item) {
-            var trHTML = $(`<tr>
+        //lấy dữ liệu khách hàng trên server qua lời gọi api service
+        /* *
+         * Load dữ liệu bằng các gọi api service
+         * Author: TDNAM (23/09/2020)
+         * */
+        //$('.grid table tbody').empty();
+        $.ajax({
+            url: "/GetCustomer",
+            method: "GET",
+            data: "",//tham số truyền qua body request
+            contentType: "application/json",
+            dataType: "",
+            
+        }).done(function (response) {
+            debugger;
+            $('.grid table tbody').empty();
+        $.each(response, function (index, item) {
+            var trHTML = $(`<tr class="row-selected">
                       <td>`+ item.CustomerId + `</td>
                       <td>`+ item.CustomerName + `</td>
                       <td>`+ item.ManageName + `</td>
@@ -27,6 +42,12 @@ class Customer {
                       </tr>`);
             $('.grid table tbody').append(trHTML);
         })
+
+        }).fail(function (response) {
+            debugger;
+
+        })
+        
     }
     //Hàm khởi tạo các button
     initEvent() {
@@ -61,12 +82,25 @@ class Customer {
          * Kiểm tra mã khách hàng có trùng không trước khi thêm vào
          * Author: TDNAM (22/09/2020)
          * */
-        var cusId = $("#txtCustomerId").val();
-        $.each(customers, function (index, item) {
-            if (item.CustomerId == cusId) {
-                isDuplicate = false;
-            }
+        $.ajax({
+            url: "/customers",
+            method: "GET",
+            data: "",
+            contentType: "application/json",
+            dataType: "",
+
+        }).done(function (response) {
+            debugger;
+            var cusId = $("#txtCustomerId").val();
+            $.each(response, function (index, item) {
+                if (item.CustomerId == cusId) {
+                    isDuplicate = false;
+                }
+            })
+        }).fail(function (response) {
+            debugger;
         })
+        
         /*
          * Kiểm tra các trường bắt buộc không được rỗng
          * Author: TDNAM (21/09/2020)
@@ -83,6 +117,7 @@ class Customer {
             if (this.Getbutton == 1) {
                 if (isDuplicate) {
                     var customer = {};
+                    var seft = this;
                     customer.CustomerId = $("#txtCustomerId").val();
                     customer.CustomerName = $("#txtCustomerName").val();
                     customer.ManageName = $("#txtManageName").val();
@@ -91,12 +126,24 @@ class Customer {
                     customer.Phone = $("#txtPhoneNumber").val();
                     customer.Email = $("#txtEmail").val();
                     //Lưu trữ thông tin trên form vào database
-                    customers.push(customer);
+                    debugger;
+                    $.ajax({
+                        url: "",
+                        url: "/AddCustomer",
+                        method: "POST",
+                        data: JSON.stringify(customer),//tham số truyền qua body request
+                        contentType: "application/json",
+                        dataType: ""
+                    }).done(function (res) {
+                        //debugger;
+                        seft.loadData();
+                        seft.Refresh();
+                        seft.hideDialogDetail();
+                    }).fail(function (res) {
+                        //debugger;
+                     })
+                    //customers.push(customer);
                     //load lại form
-
-                    this.loadData();
-                    this.Refresh();
-                    this.hideDialogDetail();
                 }else {
                     alert('Mã khách hàng đã trùng lặp, vui lòng nhập lại!');
                     $('#txtCustomerId').val('');
@@ -208,7 +255,24 @@ class Customer {
 
     btnEditOnClick() {
         this.Getbutton = 2;
-        this.showDialogDetail();
+        //Lấy dữ liệu của khách hàng tương ứng đã chọn
+            //1. Xác định khách hàng nào dã được chọn
+        var trSelected = $("#tbCustomer tr.row-selected");
+        //2. Lấy thông tin theo mã khách hàng
+        if (trSelected.length > 0) {
+            //Hiển thị form chi tiết:
+            this.showDialogDetail();
+            var customerId = $(trSelected).children()[0].textContent
+
+        } else {
+            alert('Bạn chưa chọn khách hàng nào, Vui lòng chọn để sửa');
+        }
+            //3. Gọi api service để lấy dữ liệu chi tiết của khách hàng
+        // binding các thông tin của khách hàng lên form
+
+        //chỉnh sửa thông tin trên form
+
+        //Thực hiện lưu dữ liệu sau khi chỉnh sửa
         $("#txtCustomerId").val(this.objCustomer.CustomerId);
         $("#txtCustomerName").val(this.objCustomer.CustomerName);
         $("#txtManageName").val(this.objCustomer.ManageName);

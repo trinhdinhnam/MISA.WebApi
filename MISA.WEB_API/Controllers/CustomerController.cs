@@ -8,23 +8,30 @@ using System.Web.Http;
 
 namespace MISA.WEB_API.Controllers
 {
+    [RoutePrefix("customers")]
     public class CustomerController : ApiController
     {
-        // GET: api/Customer
+        // GET: api/Customer/
+        [Route("")]
         public IEnumerable<Customer> Get()
         {
-            return Customer.customers;
+            return Customer.CustomerList;
         }
 
         // GET: api/Customer/5
-        public string Get(int id)
+        [Route("{customerId}")]
+        public object Get(string customerId)
         {
-            return "value";
+            var customers = Customer.CustomerList.Where(e => e.CustomerId == customerId);
+            return customers;
         }
 
         // POST: api/Customer
-        public void Post([FromBody]string value)
+        [Route("AddCustomer")]
+        public bool Post([FromBody]Customer customer)
         {
+            Customer.CustomerList.Add(customer);
+            return true;
         }
 
         // PUT: api/Customer/5

@@ -7,7 +7,7 @@ namespace MISA.WEB_API.Models
 {
     public class Customer
     {
-        public static List<Customer> customers = new List<Customer>()
+        public static List<Customer> CustomerList = new List<Customer>()
         {
             new Customer(){CustomerId= "KH9492394", CustomerName= "Trịnh Đình Nam",ManageName= "MISA",TaxId= "94939544",Address= "Thanh Nhàn, Hà Nội",Phone= "0395699933",Email= "nam16898@gmail.com" },
             new Customer(){CustomerId= "KH8438453", CustomerName= "Phạm Minh Sang",ManageName= "Viettel",TaxId= "28183823",Address= "Thường Tín, Hà Nội",Phone= "0324004935",Email= "sang2378@gmail.com" },
