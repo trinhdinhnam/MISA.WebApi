@@ -31,7 +31,7 @@ class CustomerJS {
             debugger;
             $('.grid table tbody').empty();
         $.each(response, function (index, item) {
-            var trHTML = $(`<tr class="row-selected">
+            var trHTML = $(`<tr>
                       <td>`+ item.CustomerId + `</td>
                       <td>`+ item.CustomerName + `</td>
                       <td>`+ item.ManageName + `</td>
@@ -57,6 +57,8 @@ class CustomerJS {
         $('.btn-store').click(this.btnSaveOnClick.bind(this));
         $('input[required]').blur(this.checkRequired);
         $('.toolbar-btn-edit').click(this.btnEditOnClick.bind(this));
+        $("#tbCustomer").on("click", "tbody tr", this.rowClickTable);
+
         $('.toolbar-btn-del').click(this.btnDeleteOnClick.bind(this));
         //$('#tbCustomer tbody tr').click(this.rowClickTable);
         $("#tbCustomer").on("click","tbody tr", this.rowClickTable);
@@ -65,7 +67,7 @@ class CustomerJS {
         }
        //Hàm Thêm khách hàng
     btnAddOnClick() {
-        this.FormMode = 1;
+        this.Getbutton = 1;
         this.showDialogDetail();
     }
     //Hàm Sửa khách hàng
@@ -101,9 +103,8 @@ class CustomerJS {
                     $("#txtEmail").val(customer.Email);
                     //chỉnh sửa thông tin trên form
 
-
                 }
-            }).fail(function (res) {
+            }).fail(function (customer) {
                 //debugger;
             })
 
@@ -123,7 +124,6 @@ class CustomerJS {
     btnSaveOnClick() {
        
         //validate dữ liệu trên form( Kiểm tra dữ liệu nhập trên form có dúng hay không)
-        
         var inputRequired = $("[required]");
         var isValid = true;
         var isDuplicate = true;
@@ -133,22 +133,18 @@ class CustomerJS {
          * Kiểm tra mã khách hàng có trùng không trước khi thêm vào
          * Author: TDNAM (22/09/2020)
          * */
+        var customerId = $("#txtCustomerId").val();
         $.ajax({
-            url: "/customers",
+            url: "/customers/" + customerId,
             method: "GET",
-            data: "",
+            data: "",//tham số truyền qua body request
             contentType: "application/json",
-            dataType: "",
-
-        }).done(function (response) {
-            debugger;
-            var cusId = $("#txtCustomerId").val();
-            $.each(response, function (index, item) {
-                if (item.CustomerId == cusId) {
-                    isDuplicate = false;
-                }
-            })
-        }).fail(function (response) {
+            dataType: "json"
+        }).done(function (res) {
+            if (res) {
+                isDuplicate = false;
+            }
+        }).fail(function (res) {
             debugger;
         })
         
@@ -185,17 +181,17 @@ class CustomerJS {
                         contentType: "application/json",
                         dataType: "json"
                     }).done(function (res) {
-                        //debugger;
+                        debugger;
+                        //load lại form
                         seft.loadData();
                         seft.Refresh();
                         seft.hideDialogDetail();
                         self.Getbutton = null;
-
+                        debugger;
                     }).fail(function (res) {
-                        //debugger;
+                        debugger;
                      })
                     //customers.push(customer);
-                    //load lại form
                 }else {
                     alert('Mã khách hàng đã trùng lặp, vui lòng nhập lại!');
                     $('#txtCustomerId').val('');
@@ -204,7 +200,7 @@ class CustomerJS {
             }
 
             //Sửa dữ liệu
-            if (seft.Getbutton==2) {
+            else if (seft.Getbutton==2) {
                 //Thực hiện lưu dữ liệu sau khi chỉnh sửa
                 //1. Thu thập thông tin đã chỉnh sửa.
                 var cusEdit = {};
@@ -230,7 +226,6 @@ class CustomerJS {
                         seft.Refresh();
                         seft.hideDialogDetail();
                         self.Getbutton = null;
-
                     }
 
                 }).fail(function (res) {
@@ -241,7 +236,10 @@ class CustomerJS {
        
        
     }
-
+   /**
+    * Hàm kiểm tra validate các trường bắt buộc trên form
+    * Author: TDNAM (21/09/2020)
+    * */
     checkRequired() {
         var value = this.value;
 
@@ -264,7 +262,6 @@ class CustomerJS {
         $('.modal').show();
         $('.dialog-form').show();
         $("#txtCustomerId").focus();
-
     }
     /**
      * Ẩn dialog chi tiết
@@ -298,17 +295,14 @@ class CustomerJS {
         this.classList.add("row-selected");
         $(this).siblings().removeClass("row-selected");
     }
-    
-
-    
-
     btnDeleteOnClick() {
         var seft = this;
+
         //Lấy dữ liệu của khách hàng tương ứng đã chọn
         //1. Xác định khách hàng nào dã được chọn
         var trSelected = $("#tbCustomer tr.row-selected");
         //2. Lấy thông tin theo mã khách hàng
-        if (trSelected.length > 0) {
+        if (trSelected.length ) {
             //Hiển thị form chi tiết:
             var customerId = $(trSelected).children()[0].textContent
             //3. Gọi api service để lấy dữ liệu chi tiết của khách hàng
@@ -319,22 +313,17 @@ class CustomerJS {
 
                 }).done(function (customer) {
                     debugger;
-                    if (!customer) {
-                        alert('Không có khách hàng với mã tương đương');
-                        self.loadData();
-                    } else {
-                        // binding các thông tin của khách hàng lên form
-
-                        //chỉnh sửa thông tin trên form
-
-
+                    if (customer) {
+                        //Xóa thành công sẽ load lại form
+                        seft.loadData();
                     }
-                }).fail(function (res) {
+                    else {
+                        alert('Không tồn tại mã khách hàng');
+                    }
+                }).fail(function (customer) {
                     //debugger;
                 })
             }
-            
-
         } else {
             alert('Bạn chưa chọn khách hàng nào, Vui lòng chọn để sửa');
         }
