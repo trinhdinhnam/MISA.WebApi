@@ -22,12 +22,12 @@ namespace MISA.WEB_API.Controllers
         [Route("{customerId}")]
         public object Get(string customerId)
         {
-            var customers = Customer.CustomerList.Where(e => e.CustomerId == customerId);
+            var customers = Customer.CustomerList.Where(e => e.CustomerId == customerId).FirstOrDefault();
             return customers;
         }
 
         // POST: api/Customer
-        [Route("AddCustomer")]
+        [Route("add")]
         public bool Post([FromBody]Customer customer)
         {
             Customer.CustomerList.Add(customer);
@@ -35,13 +35,34 @@ namespace MISA.WEB_API.Controllers
         }
 
         // PUT: api/Customer/5
-        public void Put(int id, [FromBody]string value)
-        {
+        [Route("edit")]
+        public bool Put( [FromBody]Customer customer)
+        { 
+            //Xac định đối tượng customer thực hiện chỉnh sửa thông tin trong List
+            var customerEdit = Customer.CustomerList.Where(e => e.CustomerId == customer.CustomerId).FirstOrDefault();
+            //Customer.CustomerList.Remove(customerEdit);
+            //Customer.CustomerList.Add(customer);
+            customerEdit.CustomerId = customer.CustomerId;
+            customerEdit.CustomerName = customer.CustomerName;
+            customerEdit.ManageName = customer.ManageName;
+            customerEdit.TaxId = customer.TaxId;
+            customerEdit.Phone = customer.Phone;
+            customerEdit.Address = customer.Address;
+            customerEdit.Email = customer.Email;
+            return true;
+            //Chỉnh sửa thông mới
+
+            //Cập nhật lại dữ liệu customer
         }
 
         // DELETE: api/Customer/5
-        public void Delete(int id)
+        [Route("delete/{customerId}")]
+        public bool Delete(string customerId)
         {
+            var customerDel = Customer.CustomerList.Where(e => e.CustomerId == customerId).FirstOrDefault();
+            Customer.CustomerList.Remove(customerDel);
+            return true;
+
         }
     }
 }

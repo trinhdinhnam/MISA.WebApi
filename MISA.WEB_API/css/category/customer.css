@@ -5,12 +5,13 @@
     height: calc( 100% - 50px);
 }
 
+
+
 /*Table*/
 .grid table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #e8e1e1;
-    overflow-x: scroll;
 }
 
 .grid td, th {
