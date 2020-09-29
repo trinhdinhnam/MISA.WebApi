@@ -154,6 +154,8 @@
     <Content Include="css\layout\menu.css" />
     <Content Include="Global.asax" />
     <Content Include="js\category\customer.js" />
+    <Content Include="js\category\employee.js" />
+    <Content Include="js\common\base.js" />
     <Content Include="js\common\common.js" />
     <Content Include="js\common\jquery-3.5.1.min.js" />
     <Content Include="pages\category\customer.html" />
@@ -163,10 +165,12 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Employee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
