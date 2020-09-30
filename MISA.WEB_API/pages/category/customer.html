@@ -157,7 +157,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
                         </tbody>
                     </table>
                 </div>
@@ -194,17 +193,17 @@
         <div class="dialog-content">
             <div class="customer-id">
                 <div class="customer-id-text">Mã khách hàng (*)</div>
-                <input class="customer-id-input" required id="txtCustomerId" type="text" />
+                <input fieldName ="CustomerId" class="customer-id-input" required id="txtCustomerId" type="text" />
 
             </div>
             <div class="customer-name">
                 <div class="customer-name-text">Tên khách hàng (*)</div>
-                <input class="customer-name-input" required id="txtCustomerName" type="text" />
+                <input fieldName="CustomerName" class="customer-name-input" required id="txtCustomerName" type="text" />
 
             </div>
             <div class="member-id">
                 <div class="member-id-text">Mã thẻ thành viên</div>
-                <input class="member-id-input" id="txtMemberId" type="text" />
+                <input fieldName="MemberId" class="member-id-input" id="txtMemberId" type="text" />
 
             </div>
             <div class="clear"></div>
@@ -221,32 +220,32 @@
             <div class="clear"></div>
             <div class="phone">
                 <div class="phone-text">ĐT di động (*)</div>
-                <input class="phone-input" required id="txtPhoneNumber" type="tel" />
+                <input fieldName="Phone" class="phone-input" required id="txtPhoneNumber" type="tel" />
 
             </div>
 
             <div class="birth">
                 <div class="birth-text">Ngày sinh</div>
-                <input type="date" class="birth-input" />
+                <input fieldName="DateOfBirth" type="date" class="birth-input" />
 
             </div>
             <div class="manage-name">
                 <div class="manage-name-text">Tên công ty</div>
-                <input class="manage-name-input" id="txtManageName" type="text" />
+                <input fieldName="ManageName" class="manage-name-input" id="txtManageName" type="text" />
 
             </div>
             <div class="tax-id">
                 <div class="tax-id-text">Mã số thuế</div>
-                <input class="tax-id-input" id="txtTaxId" type="text" />
+                <input fieldName="TaxId" class="tax-id-input" id="txtTaxId" type="text" />
             </div>
 
             <div class="email">
                 <div class="email-text">Email</div>
-                <input class="email-input" id="txtEmail" type="email" />
+                <input fieldName="Email" class="email-input" id="txtEmail" type="email" />
             </div>
             <div class="address">
                 <div class="address-text">Địa chỉ</div>
-                <input class="address-input" id="txtAddress" type="text" />
+                <input fieldName="Address" class="address-input" id="txtAddress" type="text" />
             </div>
             <div class="note">
                 <div class="note-text">Ghi chú</div>
@@ -263,6 +262,8 @@
     </div>
     <script src="../../js/common/jquery-3.5.1.min.js"></script>
     <!--<script src="../../js/common/common.js"></script>-->
+    <script src="../../js/common/common.js"></script>
+    <script src="../../js/common/base.js"></script>
     <script src="../../js/category/customer.js"></script>
 </body>
 </html>
