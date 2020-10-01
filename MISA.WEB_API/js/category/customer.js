@@ -113,7 +113,7 @@ class CustomerJS extends BaseJS {
         }
     }
     /**
-     * Hàm lấy Id Customer
+     * Ham lay du lieu khach hang theo Id
      * @param {string} Id
      */
     getDataById(Id) {
@@ -121,7 +121,7 @@ class CustomerJS extends BaseJS {
             var self = this;
             $.ajax({
                 url: "",
-                url: "/customers/" + customerId,
+                url: "/customers/" + Id,
                 method: "GET",
 
             }).done(function (customer) {
@@ -129,6 +129,7 @@ class CustomerJS extends BaseJS {
                 if (!customer) {
                     alert('Không có khách hàng với mã tương đương');
                 } else {
+                    debugger;
                     return customer;
                 }
             }).fail(function (customer) {

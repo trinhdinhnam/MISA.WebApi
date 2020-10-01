@@ -1,5 +1,4 @@
 ﻿$(document).ready(function () {
-    baseJS = new BaseJS();
 
 })
 /**
@@ -10,9 +9,7 @@
 class BaseJS {
     constructor(name) {
         debugger
-
         this.getData();
-        this.getDataById(Id);
         this.loadData();
         this.initEvent();
 
@@ -20,10 +17,14 @@ class BaseJS {
     getData() {
         this.Data = {};
     }
-
+    /**
+     * Hàm lấy dữ liệu Customer theo Id
+     * @param {string} Id
+     */
     getDataById(Id) {
-        this.DataId = {};
+        return true;
     }
+
 
     /**
      * Hàm load dữ liệu 
@@ -213,37 +214,29 @@ class BaseJS {
         //1. Xác định khách hàng nào dã được chọn
         var trSelected = $("#tbCustomer tr.row-selected");
         //2. Lấy thông tin theo mã khách hàng
-        if (trSelected.length > 0) {
-            //Hiển thị form chi tiết:
-            this.showDialogDetail();
-            var Id = $(trSelected).children()[0].textContent;
-            this.getDataById(Id);
-            //3. Gọi api service để lấy dữ liệu chi tiết của khách hàng
-            
-                $.each(fields, function (index, field) {
-                    debugger;
-                    var fieldName = $(field).attr('fieldName');
-                    var value = obj[fieldName];
-                    var td = $(`<td>` + value + `</td>`);
-                    $(tr).append(td);
-                })
-                // Binding dữ liệu lên UI:
-                //debugger
-                //var trHTML = self.makeTrHTML(obj);
-                $('.grid table tbody').append(tr);
-                    // binding các thông tin của khách hàng lên form
-                    $("#txtCustomerId").val(customer.CustomerId);
-                    $("#txtCustomerName").val(customer.CustomerName);
-                    $("#txtManageName").val(customer.ManageName);
-                    $("#txtTaxId").val(customer.TaxId);
-                    $("#txtAddress").val(customer.Address);
-                    $("#txtPhoneNumber").val(customer.Phone);
-                    $("#txtEmail").val(customer.Email);
-                    //chỉnh sửa thông tin trên form
+        try {
+            if (trSelected.length > 0) {
+                //Hiển thị form chi tiết:
+                this.showDialogDetail();
+                var Id = $(trSelected).children()[0].textContent;
+                //3. Gọi api service để lấy dữ liệu chi tiết của khách hàng
 
-        } else {
-            alert('Bạn chưa chọn khách hàng nào, Vui lòng chọn để sửa');
+                // Binding dữ liệu lên UI:
+                debugger
+                var fields = $(".dialog-content input, .dialog-content select, .dialog-content textarea");
+                $.each(fields, function (index, field) {
+                    var fieldName = $(field).attr('fieldName');
+                    $(field).val(seft.getDataById(Id)[fieldName]);
+                })
+                //chỉnh sửa thông tin trên form
+
+            } else {
+                alert('Bạn chưa chọn khách hàng nào, Vui lòng chọn để sửa');
+            }
+        } catch (e) {
+            console.log('error');
         }
+
     }
     /**
      * Viết hàm click vao button Xoa
