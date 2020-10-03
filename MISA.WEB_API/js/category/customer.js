@@ -98,7 +98,7 @@ class CustomerJS extends BaseJS {
             }).done(function (res) {
                 //debugger;
                 if (res) {
-                    self.getData
+                    self.getData();
                     seft.loadData();
                     seft.Refresh();
                     seft.hideDialogDetail();
@@ -137,6 +137,38 @@ class CustomerJS extends BaseJS {
             })
         } catch (e) {
             console.log(e);
+        }
+    }
+    /**
+     * Ham gọi service đê xóa khach hang theo Id
+     * @param {string} Id
+     */
+    deleteData(Id) {
+        try {
+
+
+            var self = this;
+
+            $.ajax({
+                url: "/customers/delete/" + Id,
+                method: "DELETE",
+
+            }).done(function (customer) {
+                debugger;
+                if (customer) {
+                    //Xóa thành công sẽ load lại form
+                    self.getData();
+
+                    self.loadData();
+                }
+                else {
+                    alert('Không tồn tại mã khách hàng');
+                }
+            }).fail(function (customer) {
+                //debugger;
+            })
+        } catch (e) {
+            console.log('error');
         }
     }
     //Hàm load dữ liệu khách hảng

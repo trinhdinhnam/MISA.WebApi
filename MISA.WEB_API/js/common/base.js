@@ -135,7 +135,10 @@ class BaseJS {
         this.loadData();
     }
 
-
+    /**
+     * Viết hàm lưu lại dữ liệu khi thêm
+     * Author: TDNAM (30/09/2020)
+     * */
     postData(obj, menthod) {
 
     }
@@ -239,11 +242,34 @@ class BaseJS {
 
     }
     /**
+     * Viết hàm gọi Service để xóa dữ liệu
+     * @param {string} Id
+     */
+    deleteData(Id) {
+
+    }
+    /**
      * Viết hàm click vao button Xoa
      * Author: TDNAM (30/09/2020)
      * TODO: Cần sửa lại
      * */
     btnDeleteOnClick() {
+        var seft = this;
+
+        //Lấy dữ liệu của khách hàng tương ứng đã chọn
+        //1. Xác định khách hàng nào dã được chọn
+        var trSelected = $("#tbCustomer tr.row-selected");
+        //2. Lấy thông tin theo mã khách hàng
+        if (trSelected.length) {
+            //Hiển thị form chi tiết:
+            var customerId = $(trSelected).children()[0].textContent
+            //3. Gọi api service để lấy dữ liệu chi tiết của khách hàng
+            if (customerId) {
+                this.deleteData(customerId);
+            }
+        } else {
+            alert('Bạn chưa chọn khách hàng nào, Vui lòng chọn để sửa');
+        }
 
     }
     /**
