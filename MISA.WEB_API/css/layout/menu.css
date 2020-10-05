@@ -13,23 +13,27 @@
 }
 
 
-#logo .iconbar {
-    width: 50px !important;
-    float: left;
-    height: 100%;
-    background-image: url('../../content/images/icon-left-header.png');
-    background-repeat: no-repeat;
-    background-position: 20px 15px;
-}
+    #logo .iconbar {
+        width: 50px !important;
+        float: left;
+        height: 100%;
+        background-image: url('../../content/images/icon-left-header.png');
+        background-repeat: no-repeat;
+        background-position: 20px 15px;
+    }
 
-#logo .logo-text {
-    float: left;
-    height: 100%;
-    width: calc(100% - 50px);
-    background-image: url('../../content/images/logo-text.png');
-    background-repeat: no-repeat;
-    background-position: left;
-}
+        #logo .iconbar:hover {
+            cursor: pointer;
+        }
+
+    #logo .logo-text {
+        float: left;
+        height: 100%;
+        width: calc(100% - 50px);
+        background-image: url('../../content/images/logo-text.png');
+        background-repeat: no-repeat;
+        background-position: left;
+    }
 
 /*Menu item*/
 #menu-content {
@@ -57,7 +61,6 @@
         height: 100%;
         align-self: center;
         background-repeat: no-repeat;
-        
     }
 
     .menu-item .menu-item-text {
@@ -113,6 +116,7 @@
     background-image: url('../../content/images/icon-subscriber.png');
     background-position: 10px 7px;
 }
+
 .icon-odercancle {
     background-image: url('../../content/images/ic_hoadon.png');
     background-position: 10px 7px;
@@ -122,6 +126,7 @@
     background-image: url('../../content/images/iconMenu.png');
     background-position: 7px -227px;
 }
+
 .icon-help {
     background-image: url('../../content/images/iconHelp.png');
     background-position: 10px 7px;

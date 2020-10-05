@@ -13,6 +13,8 @@ class BaseJS {
         this.loadData();
         this.initEvent();
         this.getDataById();
+        var formMode;
+
     }
     getData() {
         this.Data = {};
@@ -50,14 +52,32 @@ class BaseJS {
                 $.each(fields, function (index, field) {
                     debugger;
                     var fieldName = $(field).attr('fieldName');
-                    var value = obj[fieldName];
-                    var td = $(`<td>` + value + `</td>`);
+                    var td;
+                    var value;
+                    //switch (fieldName) {
+                    //    case 'DateOfBirth':
+                    //        value = commonJS.formatDate(obj[fieldName]);
+
+                    //        break;
+                    //    case 'Salary':
+                    //        value = commonJS.formatMoney(obj[fieldName]);
+                    //        break;
+
+                    //    default:
+                            value = obj[fieldName];
+                    //        break;
+                    //}
+                    td = $(`<td>` + value + `</td>`);
+
+                    //value = obj[fieldName];
+
                     $(tr).append(td);
                 })
                 // Binding dữ liệu lên UI:
                 //debugger
                 //var trHTML = self.makeTrHTML(obj);
                 $('.grid table tbody').append(tr);
+                $(this).siblings().removeClass("row-selected");
             })
         } catch (e) {
             console.log('error');
@@ -84,9 +104,10 @@ class BaseJS {
     /**
      * Hàm sự kiện click vào button Thêm
      * Author: TDNAM (30/09/2020)
+     * Edit: TDNAM (05/10/2020) Thay đổi giá trị formMode kích hoạt sự kiện cho button cất
      * */
     btnAddOnClick() {
-        this.Getbutton = 1;
+        this.formMode = 1;
         this.showDialogDetail();
     }
 
@@ -104,28 +125,68 @@ class BaseJS {
     btnSaveOnClick() {
         debugger;
         //validate dữ liệu trên form( Kiểm tra dữ liệu nhập trên form có dúng hay không)
-        var self = this;
-        var method = null;
+        //1. Kiểm tra các trường bắt buôc nhập trên form dialog
+        var isValid = true;
+        var inputRequired = $('input[required]');
+        $.each(inputRequired, function (index, input) {
+            if (!validData.validateRequired(input)) {
+                isValid = false;
+            }
+        })
+        //2. Kiểm tra index có trùng với index có trong database không
+        var isDuplicate = true;
+        var inputId = $('.indexObj');
+        var fieldNameId = $(inputId).attr('fieldName');
+        $.each(data, function (index, item) {
+            if (item[fieldNameId] == inputId.val()) {
+                isDuplicate = false;
+            }
+        })
+
+        //3. Kiểm tra tính chính xác của email nhập vào
+        var inputEmail = $('#txtEmail');
+        var isCheckEmail = validData.validateEmail(inputEmail);
+        var inputRequired = $('input[required]');
 
         try {
-            var data = {};
-            //Lấy thông tin nhập vào trên form:
-            var fields = $(".dialog-content input, .dialog-content select, .dialog-content textarea");
-            $.each(fields, function (index, field) {
-                var fieldName = $(field).attr('fieldName');
-                data[fieldName] = $(field).val();
-            })
-            if (self.Getbutton == 1) {
+            if (isValid) {
                 debugger
-                method = "POST";
-                this.postData(data, method);
+                if (isCheckEmail) {
+                    var method = null;
+                    debugger
+                    var data = {};
+                    //Lấy thông tin nhập vào trên form:
+                    var fields = $(".dialog-content input, .dialog-content select, .dialog-content textarea");
+                    $.each(fields, function (index, field) {
+                        var fieldName = $(field).attr('fieldName');
+                        data[fieldName] = $(field).val();
+                    })
+                    if (this.formMode == 1) {
+                        //Khi giá trị của formMode la 1 thì nút cất là Thêm
+                        if (isDuplicate) {
 
+                            debugger
+                            //Gọi service thực hiện lưu dữ liệu
+                            method = "POST";
+                            this.postData(data, method);
+                        } else {
+                            alert('Mã của bản nhập vào đã bị trùng!');
+
+                        }
+                    }
+                    else if (this.formMode == 2) {
+                        debugger
+                        //Gọi service thực hiện lưu dữ liệu
+                        method = "PUT";
+                        this.putData(data, method);
+
+                    }
+                } else {
+                    alert('Bạn phải nhập đúng địa chỉ email hợp lệ.\nExample@gmail.com');
+                }
             }
-            else if (self.Getbutton == 2) {
-                debugger
-                method = "PUT";
-                this.putData(data, method);
-
+            else {
+                alert('Bạn hãy kiểm tra lại các trường bắt buộc phải được nhập!');
             }
         } catch (e) {
             console.log('error');
@@ -141,30 +202,25 @@ class BaseJS {
     }
 
     /**
-     * Viết hàm lưu lại dữ liệu khi thêm
-     * Author: TDNAM (30/09/2020)
-     * */
-    postData(obj, menthod) {
+     * Xây dựng hàm gọi service để thêm đối tượng vào csdl
+     * @param {object} obj
+     * @param {string} method
+     */
+    postData(obj, method) {
 
     }
+
     /**
-     * Hàm kiểm tra validate dữ liệu
-     * Author: TDNAM (30/09/2020)
-     * */
+     * Xây dựng hàm gọi service để cập nhật đối tượng đã sửa vào trong CSDL
+     * @param {object} obj
+     * @param {string} method
+     */
+    putData(obj, method) {
+
+    }
 
     //#endregion "Các sự kiện button";
-    checkRequired() {
-        var value = this.value;
 
-        if (!value) {
-            $(this).addClass("required-error");
-            $(this).attr("title", "Bạn phải nhập thông tin này!");
-        } else {
-            $(this).removeClass("required-error");
-            $(this).removeAttr("title");
-        }
-
-    }
     /**
      * Hiển thị dialog chi tiết
      * Author: TDNAM (30/09/2020)
@@ -172,7 +228,8 @@ class BaseJS {
     showDialogDetail() {
         $('.modal').show();
         $('.dialog-form').show();
-        $("#txtCustomerId").focus();
+        var inputId = $('.indexObj');
+        inputId.focus();
 
     }
     /**
@@ -190,13 +247,10 @@ class BaseJS {
      * */
 
     Refresh() {
-        $("#txtCustomerId").val('');
-        $("#txtCustomerName").val('');
-        $("#txtManageName").val('');
-        $("#txtTaxId").val('');
-        $("#txtAddress").val('');
-        $("#txtPhoneNumber").val('');
-        $("#txtEmail").val('');
+        var inputs = $('input[fieldName]');
+        $.each(inputs, function (index, input) {
+            $('input[fieldName]').val('');
+        })
     }
     /**
      * Viết hàm lấy đối tượng khi click vào bảng
@@ -216,7 +270,7 @@ class BaseJS {
      * 
      * */
     btnEditOnClick() {
-        this.Getbutton = 2;
+        this.formMode = 2;
         var seft = this;
         //Lấy dữ liệu của khách hàng tương ứng đã chọn
         //1. Xác định khách hàng nào dã được chọn
@@ -236,8 +290,8 @@ class BaseJS {
                 var inputs = $("input[fieldName], select[fieldName]");
                 $.each(inputs, function (index, input) {
                     debugger
-                    var fieldName = $(input).attr('fieldName');                  
-                        $(input).val(objId[fieldName]);
+                    var fieldName = $(input).attr('fieldName');
+                    $(input).val(objId[fieldName]);
                 })
                 //chỉnh sửa thông tin trên form
 
@@ -263,7 +317,6 @@ class BaseJS {
      * */
     btnDeleteOnClick() {
         var seft = this;
-
         //Lấy dữ liệu của khách hàng tương ứng đã chọn
         //1. Xác định khách hàng nào dã được chọn
         var trSelected = $("#tbCustomer tr.row-selected");
@@ -280,29 +333,5 @@ class BaseJS {
         }
 
     }
-    /**
-     * Xử lý cắt khoảng trắng ở 2 đầu chuỗi nhập vào
-     * Author: TDNAM (30/09/2020)
-     * @param {string} x
-     */
-    validateByTrim(x) {
-        return x.replace(/^\s+|\s+$/gm, '');
-    }
 
-    /**
-     * Hàm kiểm tra giá trị Email nhập vào
-     * Author: TDNAM (30/09/2020)
-     * */
-    checkEmail() {
-        var email = $('#txtEmail').val();
-        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        if (!filter.test(email)) {
-            alert('Bạn phải nhập đúng địa chỉ email hợp lệ.\nExample@gmail.com');
-            email.focus;
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
 }

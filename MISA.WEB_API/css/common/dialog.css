@@ -1,4 +1,4 @@
-﻿.clear{
+﻿.clear {
     clear: both;
 }
 /* Dialog form css*/
@@ -15,23 +15,15 @@
     right: 0;
     bottom: 0;
 }
-.dialog-form .dialog-title{
-    height: 25px;
-    padding: 5px;
-    display: flex;
-}
 
-.dialog-form .dialog-title .dialog-title-text{
-    color: #ffffff;
-}
-    .dialog-form .dialog-title .dialog-title-icon {
-        margin-left: 530px;
-    }
-    .dialog-form .dialog-title .dialog-title-icon:hover {
-       cursor: pointer;
+    .dialog-form .dialog-title {
+        height: 25px;
+        padding: 5px;
+        display: flex;
     }
 
-/*dialog content css*/
+
+    /*dialog content css*/
     .dialog-form .dialog-content {
         position: absolute;
         background-color: #fff;
@@ -39,196 +31,10 @@
         left: 5px;
         right: 5px;
         bottom: 5px;
-        padding: 10px;
         padding-right: 0px;
     }
 
-/*customer id*/
-.dialog-content .customer-id{
-    margin: 5px;
-    display: flex;
-    float: left;
-}
-.dialog-content .customer-id .customer-id-text{
-    margin-right: 20px;
-}
-    .dialog-content .customer-id .customer-id-input {
-        width: 146px;
-    }
 
-/*customer name*/
-
-.dialog-content .customer-name {
-    display: flex;
-    float: left;
-    margin: 5px;
-}
-
-.dialog-content .customer-name .customer-name-text {
-    margin-right: 14px;
-}
-.dialog-content .customer-name .customer-name-input {
-    width: 146px;
-}
-/*member id*/
-
-.dialog-content .member-id {
-
-    margin: 5px;
-    display: flex;
-    float: left;
-}
-
-    .dialog-content .member-id .member-id-text {
-        margin-right: 25px;
-
-    }
-
-    .dialog-content .member-id .member-id-input {
-        width: 145px;
-    }
-
-/*customer group*/
-
-.dialog-content .customer-group {
-    margin: 5px;
-    display: flex;
-    float: left;
-}
-
-    .dialog-content .customer-group .customer-group-text {
-        margin-right: 25px;
-    }
-
-    .dialog-content .customer-group .customer-group-content {
-        border: 1px solid #c6c2c2;
-        background-color: #fff;
-        width: 149px;
-        height: 20px;
-    }
-        .dialog-content .customer-group .customer-group-content .selected-customer-group {
-            width: 125px;
-            border: none;
-            float: left;
-            height: 100%;
-        }
-        .dialog-content .customer-group .customer-group-content .add-customer-group {
-            display: block;
-            background-repeat: no-repeat;
-            background-image: url('../../content/images/IconSprite.png');
-            width: 16px;
-            height: 16px;
-            background-position: 0 -2479px;
-            margin-left: 3px;
-            float: left;
-        }
-/*phone number*/
-
-.dialog-content .phone {
-    margin: 5px;
-    display: flex;
-}
-
-    .dialog-content .phone .phone-text {
-        margin-right: 47px;
-    }
-
-    .dialog-content .phone .phone-input {
-        width: 145px;
-    }
-/*birth*/
-
-.dialog-content .birth {
-    margin: 5px;
-    display: flex;
-}
-
-    .dialog-content .birth .birth-text {
-        margin-right: 80px;
-    }
-
-    .dialog-content .birth .birth-input {
-        width: 148px;
-    }
-
-/*manage name*/
-
-.dialog-content .manage-name {
-    margin: 5px;
-    display: flex;
-}
-
-    .dialog-content .manage-name .manage-name-text {
-        margin-right: 65px;
-    }
-
-    .dialog-content .manage-name .manage-name-input {
-        width: 453px;
-    }
-
-/* tax id*/
-
-.dialog-content .tax-id {
-    margin: 5px;
-    float: left;
-    display: flex;
-}
-
-    .dialog-content .tax-id .tax-id-text {
-        margin-right: 71px;
-    }
-
-    .dialog-content .tax-id .tax-id-input {
-        width: 146px;
-    }
-
-/*Email*/
-
-.dialog-content .email {
-    margin: 5px;
-    display: flex;
-    float: left;
-}
-
-    .dialog-content .email .email-text {
-        margin-right: 110px;
-    }
-
-    .dialog-content .email .email-input {
-        width: 146px;
-    }
-/*address*/
-
-.dialog-content .address {
-    margin: 5px;
-    display: flex;
-    float: left;
-}
-
-    .dialog-content .address .address-text {
-        margin-right: 98px;
-    }
-
-    .dialog-content .address .address-input {
-        width: 455px;
-    }
-/*note*/
-
-.dialog-content .note {
-    margin: 5px;
-    display: flex;
-    float: left;
-}
-
-    .dialog-content .note .note-text {
-        margin-right: 95px;
-    }
-
-    .dialog-content .note .note-input {
-        width: 453px;
-        height: 40px;
-        border: 1px solid #c6c2c2;
-    }
 
 /*toolbar dialog*/
 
@@ -247,9 +53,11 @@
     margin-right: 10px;
 }
 
-.toolbar-dialog .btn-help{
-    margin-right: 303px;
+.toolbar-dialog .btn-help {
+    margin-right: 308px;
+    margin-left: 5px;
 }
+
 .toolbar-dialog button:hover {
     background-color: #fff;
     border: 1px solid #2b9adb;
@@ -268,21 +76,15 @@
     .toolbar-dialog .icon-dialog.icon-help-dialog {
         background-position: 0 -1600px;
     }
+
     .toolbar-dialog .icon-dialog.icon-store-dialog {
         background-image: url('../../content/images/Save16.png');
     }
+
     .toolbar-dialog .icon-dialog.icon-storeadd-dialog {
         background-image: url('../../content/images/SaveAdd16.png');
     }
+
     .toolbar-dialog .icon-dialog.icon-cancle-dialog {
         background-image: url('../../content/images/Disable16.png');
     }
-
-.dialog-content input{
-    border: 1px solid #c6c2c2;
-    height: 18px;
-}
-
-.required-error, .required-error:focus {
-    border: 1px solid #ff0000;
-}

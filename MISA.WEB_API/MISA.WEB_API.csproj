@@ -148,8 +148,11 @@
     <Content Include="content\images\viewEmail.png" />
     <Content Include="css\category\customer.css" />
     <Content Include="css\category\employee.css" />
+    <Content Include="css\common\common.css" />
     <Content Include="css\common\dialog.css" />
+    <Content Include="css\common\dialog_confirm.css" />
     <Content Include="css\common\shares.css" />
+    <Content Include="css\element\table.css" />
     <Content Include="css\layout\content.css" />
     <Content Include="css\layout\menu.css" />
     <Content Include="Global.asax" />
@@ -158,6 +161,7 @@
     <Content Include="js\common\base.js" />
     <Content Include="js\common\common.js" />
     <Content Include="js\common\jquery-3.5.1.min.js" />
+    <Content Include="js\common\validate.js" />
     <Content Include="pages\category\customer.html" />
     <Content Include="pages\category\employee.html" />
     <Content Include="Web.config" />

@@ -1,0 +1,64 @@
+﻿.clear {
+    clear: both;
+}
+/* Dialog form confirm css*/
+.dialog-form-confirm {
+    display: none;
+    position: absolute;
+    width: 390px;
+    height: 240px;
+    background-color: #0973b9;
+    /*margin-left: 380px;
+    margin-top: 160px;*/
+    top: calc(50% - 100px);
+    left: calc(50% - 200px);
+    right: 0;
+    bottom: 0;
+}
+
+    .dialog-form-confirm .dialog-confirm-title {
+        height: 25px;
+        padding: 5px;
+        display: flex;
+    }
+
+
+    /*dialog confirm content css*/
+    .dialog-form-confirm .dialog-confirm-title {
+        position: absolute;
+        background-color: #fff;
+        top: 30px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        padding-right: 0px;
+    }
+
+.dialog-form-confirm .dialog-confirm-title .dialog-confirm-title-text {
+    color: #ffffff;
+}
+
+.dialog-form-confirm .dialog-confirm-title .dialog-title-icon {
+    margin-left: 530px;
+}
+
+    .dialog-form .dialog-title .dialog-title-icon:hover {
+        cursor: pointer;
+    }
+
+/*dialog confirm content css*/
+    .dialog-form-confirm .dialog-confirm-content {
+        position: absolute;
+        background-color: #fff;
+        top: 30px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        padding-right: 0px;
+    }
+
+
+/*toolbar dialog*/
+
+
+

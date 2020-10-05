@@ -1,2 +1,229 @@
-﻿body {
+﻿p {
+    color: #f00;
+    float: left;
+}
+/* Dialog title css*/
+
+.dialog-form .dialog-title .dialog-title-text {
+    color: #ffffff;
+}
+
+.dialog-form .dialog-title .dialog-title-icon {
+    margin-left: 545px;
+}
+
+    .dialog-form .dialog-title .dialog-title-icon:hover {
+        cursor: pointer;
+    }
+
+/*employee id*/
+.dialog-content .employee-id {
+    margin: 5px;
+    display: flex;
+    float: left;
+}
+
+    .dialog-content .employee-id .employee-id-text {
+        margin-right: 30px;
+    }
+
+    .dialog-content .employee-id .employee-id-input {
+        width: 146px;
+    }
+
+/*employee name*/
+
+.dialog-content .employee-name {
+    display: flex;
+    float: left;
+    margin: 5px;
+    margin-left: 15px;
+}
+
+    .dialog-content .employee-name .employee-name-text {
+        margin-right: 14px;
+    }
+
+    .dialog-content .employee-name .employee-name-input {
+        width: 157px;
+    }
+
+/*employee group*/
+
+.dialog-content .employee-group {
+    margin: 5px;
+    display: flex;
+    float: left;
+}
+
+    .dialog-content .employee-group .employee-group-text {
+        margin-right: 25px;
+    }
+
+    .dialog-content .employee-group .employee-group-content {
+        border: 1px solid #c6c2c2;
+        background-color: #fff;
+        width: 149px;
+        height: 20px;
+        margin-left: 10px;
+    }
+
+        .dialog-content .employee-group .employee-group-content .selected-employee-group {
+            width: 125px;
+            border: none;
+            float: left;
+            height: 100%;
+        }
+
+        .dialog-content .employee-group .employee-group-content .add-employee-group {
+            display: block;
+            background-repeat: no-repeat;
+            background-image: url('../../content/images/IconSprite.png');
+            width: 16px;
+            height: 16px;
+            background-position: 0 -2479px;
+            margin-left: 3px;
+            float: left;
+        }
+/*phone number*/
+
+.dialog-content .phone {
+    margin: 5px;
+    display: flex;
+}
+
+    .dialog-content .phone .phone-text {
+        margin-right: 47px;
+    }
+
+    .dialog-content .phone .phone-input {
+        width: 145px;
+    }
+/*birth*/
+
+.dialog-content .birth {
+    margin: 5px;
+    display: flex;
+}
+
+    .dialog-content .birth .birth-text {
+        margin-right: 80px;
+    }
+
+    .dialog-content .birth .birth-input {
+        width: 150px;
+        border: 1px solid #c6c2c2;
+        height: 22px;
+        font-size: 14px;
+    }
+
+/*gender css*/
+
+.dialog-content .gender {
+    margin: 5px;
+    display: flex;
+}
+
+    .dialog-content .gender .gender-text {
+        margin-right: 90px;
+    }
+
+    .dialog-content .gender .gender-employee-selected {
+        width: 153px;
+        border: 1px solid #c6c2c2;
+        height: 22px;
+        font-size: 14px;
+    }
+
+
+/*Email*/
+
+.dialog-content .email {
+    margin: 5px;
+    display: flex;
+    float: left;
+}
+
+    .dialog-content .email .email-text {
+        margin-right: 110px;
+    }
+
+    .dialog-content .email .email-input {
+        width: 146px;
+    }
+/*Position css*/
+
+.dialog-content .position-name {
+    margin: 5px;
+    display: flex;
+    float: left;
+    margin-left: 15px;
+}
+
+    .dialog-content .position-name .position-name-text {
+        margin-right: 102px;
+    }
+
+    .dialog-content .position-name .position-name-input {
+        width: 157px;
+    }
+
+/*Department css*/
+
+.dialog-content .department-name {
+    margin: 5px;
+    display: flex;
+    float: left;
+}
+
+    .dialog-content .department-name .department-name-text {
+        margin-right: 75px;
+    }
+
+    .dialog-content .department-name .department-name-selected {
+        width: 154px;
+        height: 22px;
+        border: 1px solid #c6c2c2;
+        font-size: 14px;
+    }
+/*WorkStatus css*/
+
+.dialog-content .work-status {
+    margin: 5px;
+    display: flex;
+    float: left;
+}
+
+    .dialog-content .work-status .work-status-text {
+        margin-right: 9px;
+    }
+
+    .dialog-content .work-status .work-status-selected {
+        width: 156px;
+        height: 22px;
+        border: 1px solid #c6c2c2;
+        font-size: 14px;
+    }
+
+/*Salary css*/
+
+.dialog-content .salary {
+    margin: 5px;
+    display: flex;
+    float: left;
+}
+
+    .dialog-content .salary .salary-text {
+        margin-right: 75px;
+    }
+
+    .dialog-content .salary .salary-input {
+        width: 150px;
+        height: 20px;
+        border: 1px solid #c6c2c2;
+        font-size: 14px;
+    }
+
+.dialog-content .toolbar-dialog {
+    padding-top: 30px;
 }

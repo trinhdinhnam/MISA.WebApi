@@ -7,6 +7,7 @@
 
 /*Content header*/
 .content-header {
+    position: relative;
     height: 50px;
     background-color: #2973b9;
     display: flex;
@@ -30,11 +31,11 @@
 
     .content-header .language {
         float: left;
-        position: absolute;
         width: 180px;
+        position: absolute;
         height: 30px;
         margin-top: 10px;
-        left: calc(100% - 510px);
+        margin-left: calc(100% - 490px);
     }
 
         .content-header .language select {
@@ -51,7 +52,7 @@
         width: 30px;
         margin: 10px;
         margin-top: 10px;
-        left: calc(100% - 300px);
+        left: calc(100% - 295px);
         float: left;
     }
 
@@ -95,14 +96,14 @@
         height: 30px;
         width: 200px;
         top: 10px;
-        left: calc(100% - 200px);
+        left: calc(100% - 190px);
     }
 
 .acount .acount-logo {
     float: left;
     width: 30px;
     height: 30px;
-    margin-left: 25px;
+    margin-left: 10px;
     background-color: #ebe2e2;
     border-radius: 50px;
 }
@@ -114,31 +115,32 @@
         width: 30px;
         height: 30px;
         position: absolute;
-        left: 28px;
+        left: 13px;
     }
 
 .acount .acount-name {
     background-color: #2973b9;
     float: left;
-    width: calc(100% - 60px);
+    width: calc(100% - 50px);
     height: 100%;
 }
 
     .acount .acount-name select {
         background-color: #2973b9;
         border: none;
-        width: 130px;
+        width: 90%;
         height: 30px;
         color: white;
-        margin-left: 10px;
+        margin-left: 8px;
     }
 
 /*Content body*/
 .content-body {
     position: relative;
     padding: 5px;
+    padding-bottom: 0;
     padding-left: 10px;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 50px);
 }
 
     .content-body .page-title {
@@ -221,6 +223,7 @@
     width: 100%;
     display: flex;
     background-color: rgb(239,239,239);
+    overflow: hidden;
 }
 
 .toolbar button {
@@ -274,8 +277,8 @@
     }
 
     .icon.icon-merge {
-        background-image: url('../../content/images/ic_GopKhachHang.png');
         width: 19px;
+        background-image: url('../../content/images/ic_GopKhachHang.png');
     }
 
     .icon.icon-question {
