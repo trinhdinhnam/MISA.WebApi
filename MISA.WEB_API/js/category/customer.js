@@ -86,7 +86,7 @@ class CustomerJS extends BaseJS {
      * @param {string} method
      */
     putData(cusEdit, method) {
-        //
+        // Goi service de cap nhat du lieu khach hang
         try {
             var self = this;
             $.ajax({
@@ -94,14 +94,16 @@ class CustomerJS extends BaseJS {
                 method: method,
                 data: JSON.stringify(cusEdit),//tham số truyền qua body request
                 contentType: "application/json",
-                dataType: "json"
+                dataType: "json",
+                async: false,
+
             }).done(function (res) {
                 //debugger;
                 if (res) {
                     self.getData();
-                    seft.loadData();
-                    seft.Refresh();
-                    seft.hideDialogDetail();
+                    self.loadData();
+                    self.Refresh();
+                    self.hideDialogDetail();
                     self.Getbutton = null;
                 }
 
@@ -117,23 +119,24 @@ class CustomerJS extends BaseJS {
      * @param {string} Id
      */
     getDataById(Id) {
+        debugger
         try {
             var self = this;
             $.ajax({
-                url: "",
                 url: "/customers/" + Id,
                 method: "GET",
+                data: "",//tham số truyền qua body request
+                contentType: "application/json",
+                dataType: "json",
+                async: false,
 
             }).done(function (customer) {
                 debugger;
-                if (!customer) {
-                    alert('Không có khách hàng với mã tương đương');
-                } else {
-                    debugger;
-                    return customer;
-                }
+                self.DataById = customer;
+                console.log(self.Data);
+
             }).fail(function (customer) {
-                //debugger;
+                debugger;
             })
         } catch (e) {
             console.log(e);

@@ -12,17 +12,20 @@ class BaseJS {
         this.getData();
         this.loadData();
         this.initEvent();
-
+        this.getDataById();
     }
     getData() {
         this.Data = {};
     }
     /**
      * Hàm lấy dữ liệu Customer theo Id
+     * Author: TDNAM (02/10/2020)
+     * Edit: TDNAM (05/10/2020) 
      * @param {string} Id
      */
     getDataById(Id) {
-        return true;
+        this.DataById = {};
+
     }
 
 
@@ -113,11 +116,13 @@ class BaseJS {
                 data[fieldName] = $(field).val();
             })
             if (self.Getbutton == 1) {
+                debugger
                 method = "POST";
                 this.postData(data, method);
 
             }
             else if (self.Getbutton == 2) {
+                debugger
                 method = "PUT";
                 this.putData(data, method);
 
@@ -226,10 +231,13 @@ class BaseJS {
 
                 // Binding dữ liệu lên UI:
                 debugger
-                var fields = $(".dialog-content input, .dialog-content select, .dialog-content textarea");
-                $.each(fields, function (index, field) {
-                    var fieldName = $(field).attr('fieldName');
-                    $(field).val(seft.getDataById(Id)[fieldName]);
+                seft.getDataById(Id);
+                var objId = this.DataById;
+                var inputs = $("input[fieldName], select[fieldName]");
+                $.each(inputs, function (index, input) {
+                    debugger
+                    var fieldName = $(input).attr('fieldName');                  
+                        $(input).val(objId[fieldName]);
                 })
                 //chỉnh sửa thông tin trên form
 
