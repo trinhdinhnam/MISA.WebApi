@@ -24,7 +24,7 @@
 
 
     /*dialog confirm content css*/
-    .dialog-form-confirm .dialog-confirm-title {
+    .dialog-form-confirm .dialog-confirm-content {
         position: absolute;
         background-color: #fff;
         top: 30px;
@@ -38,27 +38,42 @@
     color: #ffffff;
 }
 
-.dialog-form-confirm .dialog-confirm-title .dialog-title-icon {
-    margin-left: 530px;
+.dialog-form-confirm .dialog-confirm-title .dialog-confirm-title-icon {
+    margin-left: 125px;
 }
 
     .dialog-form .dialog-title .dialog-title-icon:hover {
         cursor: pointer;
     }
 
-/*dialog confirm content css*/
-    .dialog-form-confirm .dialog-confirm-content {
-        position: absolute;
-        background-color: #fff;
-        top: 30px;
-        left: 5px;
-        right: 5px;
-        bottom: 5px;
-        padding-right: 0px;
-    }
 
 
-/*toolbar dialog*/
+/*button dialog confirm*/
 
+.dialog-form-confirm .dialog-confirm-content .btn-confirm-del {
+    position: absolute;
+    left: 70px;
+    top: 80px;
+    height: 40px;
+    width: 80px;
+    background-color: #3c9a44 ;
+    border: none;
+    color: #fff;
+    border-radius: 2px;
+}
 
+        .dialog-form-confirm .dialog-confirm-content .btn-confirm-notdel {
+            position: absolute;
+            left: 230px;
+            top: 80px;
+            height: 40px;
+            width: 80px;
+            background-color: #ca2d2d;
+            border: none;
+            color: #fff;
+            border-radius: 2px;
+        }
 
+.dialog-form-confirm .dialog-confirm-content button:hover{
+    cursor: pointer;
+}

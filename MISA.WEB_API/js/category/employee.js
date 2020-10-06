@@ -13,28 +13,28 @@ class EmployeeJS extends BaseJS {
         super();
     }
     /** 
-     *  Hàm lấy data của Customer
-     * Author: TDNAM (29/09/2020)
+     *  Hàm lấy data của Employee
+     * Author: TDNAM (06/10/2020)
      * */
     getData() {
         try {
             var self = this;
             //$('.grid table tbody').empty();
             $.ajax({
-                url: "/customers",
+                url: "/employees",
                 method: "GET",
                 data: "",//tham số truyền qua body request
                 contentType: "application/json",
                 dataType: "",
                 async: false,
 
-            }).done(function (customer) {
+            }).done(function (employee) {
 
                 debugger;
-                self.Data = customer;
+                self.Data = employee;
                 console.log(self.Data);
 
-            }).fail(function (customer) {
+            }).fail(function (employee) {
                 debugger;
 
             })
@@ -65,19 +65,19 @@ class EmployeeJS extends BaseJS {
         validData.validateRequired(sender.currentTarget);
     }
     /**
-     *  Hàm cất data của Customer khi them
-     *  Author: TDNAM (05/10/2020)
-     * @param {object} customer
+     *  Hàm cất data của Employee khi them
+     *  Author: TDNAM (06/10/2020)
+     * @param {object} employee
      * @param {string} method
      */
-    postData(customer, method) {
+    postData(employee, method) {
         //
         try {
             var self = this;
             $.ajax({
-                url: "/customers/add",
+                url: "/employees/add",
                 method: method,
-                data: JSON.stringify(customer),//tham số truyền qua body request
+                data: JSON.stringify(employee),//tham số truyền qua body request
                 contentType: "application/json",
                 dataType: "json",
                 async: false,
@@ -101,17 +101,17 @@ class EmployeeJS extends BaseJS {
     /**
      * Hàm cấp nhật dữ liệu củ khách hàng
      * Author: TDNAM (05/10/2020)
-     * @param {object} customer
+     * @param {object} empEdit
      * @param {string} method
      */
-    putData(cusEdit, method) {
+    putData(empEdit, method) {
         // Goi service de cap nhat du lieu khach hang
         try {
             var self = this;
             $.ajax({
-                url: "/customers/edit",
+                url: "/employees/edit",
                 method: method,
-                data: JSON.stringify(cusEdit),//tham số truyền qua body request
+                data: JSON.stringify(empEdit),//tham số truyền qua body request
                 contentType: "application/json",
                 dataType: "json",
                 async: false,
@@ -134,8 +134,8 @@ class EmployeeJS extends BaseJS {
         }
     }
     /**
-     * Ham lay du lieu khach hang theo Id
-     * Author: TDNAM (05/10/2020)
+     * Ham lay du lieu Nhân viên theo Id
+     * Author: TDNAM (06/10/2020)
      * @param {string} Id
      */
     getDataById(Id) {
@@ -143,19 +143,19 @@ class EmployeeJS extends BaseJS {
         try {
             var self = this;
             $.ajax({
-                url: "/customers/" + Id,
+                url: "/employees/" + Id,
                 method: "GET",
                 data: "",//tham số truyền qua body request
                 contentType: "application/json",
                 dataType: "json",
                 async: false,
 
-            }).done(function (customer) {
+            }).done(function (employee) {
                 debugger;
-                self.DataById = customer;
+                self.DataById = employee;
                 console.log(self.Data);
 
-            }).fail(function (customer) {
+            }).fail(function (employee) {
                 debugger;
             })
         } catch (e) {
@@ -163,8 +163,8 @@ class EmployeeJS extends BaseJS {
         }
     }
     /**
-     * Ham gọi service đê xóa khach hang theo Id
-     * Author: TDNAM (05/10/2020)
+     * Ham gọi service đê xóa nhân viên theo Id
+     * Author: TDNAM (06/10/2020)
      * @param {string} Id
      */
     deleteData(Id) {
@@ -172,12 +172,12 @@ class EmployeeJS extends BaseJS {
             var self = this;
 
             $.ajax({
-                url: "/customers/delete/" + Id,
+                url: "/employees/delete/" + Id,
                 method: "DELETE",
 
-            }).done(function (customer) {
+            }).done(function (employee) {
                 debugger;
-                if (customer) {
+                if (employee) {
                     //Xóa thành công sẽ load lại form
                     self.getData();
 
@@ -186,7 +186,7 @@ class EmployeeJS extends BaseJS {
                 else {
                     alert('Không tồn tại mã khách hàng');
                 }
-            }).fail(function (customer) {
+            }).fail(function (employee) {
                 //debugger;
             })
         } catch (e) {

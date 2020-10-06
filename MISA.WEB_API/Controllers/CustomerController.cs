@@ -49,6 +49,8 @@ namespace MISA.WEB_API.Controllers
             customerEdit.Phone = customer.Phone;
             customerEdit.Address = customer.Address;
             customerEdit.Email = customer.Email;
+            customerEdit.DateOfBirth = customer.DateOfBirth;
+
             return true;
             //Chỉnh sửa thông mới
 

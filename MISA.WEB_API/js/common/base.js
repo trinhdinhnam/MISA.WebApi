@@ -54,19 +54,26 @@ class BaseJS {
                     var fieldName = $(field).attr('fieldName');
                     var td;
                     var value;
-                    //switch (fieldName) {
-                    //    case 'DateOfBirth':
-                    //        value = commonJS.formatDate(obj[fieldName]);
-
-                    //        break;
-                    //    case 'Salary':
-                    //        value = commonJS.formatMoney(obj[fieldName]);
-                    //        break;
-
-                    //    default:
-                            value = obj[fieldName];
-                    //        break;
-                    //}
+                    switch (fieldName) {
+                        case 'DateOfBirth':
+                            value = commonJS.formatDate(obj[fieldName]); 
+                            break;
+                        case 'Salary':
+                            value = commonJS.formatMoney(obj[fieldName]);
+                            break;
+                        case 'Gender':
+                            value = commonJS.formatGender(obj[fieldName]);
+                            break;
+                        case 'DepartmentName':
+                            value = commonJS.formatDepartmentName(obj[fieldName]);
+                            break;
+                        case 'WorkStatus':
+                            value = commonJS.formatWorkStatus(obj[fieldName]);
+                            break;
+                        default:
+                        value = obj[fieldName];
+                            break;
+                    }
                     td = $(`<td>` + value + `</td>`);
 
                     //value = obj[fieldName];
@@ -99,6 +106,9 @@ class BaseJS {
         //$('#tbCustomer tbody tr').click(this.rowClickTable);
         $("table tbody").on("click", "tr", this.rowClickTable);
         $('#toolbar-btn-load').click(this.btnReloadOnClick.bind(this));
+        $('.btn-confirm-del').click(this.btnConfirmDeleteOnClick.bind(this));
+        $('.btn-confirm-notdel').click(this.btnConfirmNotDeleteOnClick.bind(this));
+
     }
 
     /**
@@ -242,6 +252,27 @@ class BaseJS {
     }
 
     /**
+     * Hiển thị dialog xác nhận xóa chi tiết
+     * Author: TDNAM (06/10/2020)
+     * */
+    showDialogConfirmDetail() {
+        $('.modal').show();
+        $('.dialog-form-confirm').show();
+
+    }
+    /**
+     * Ẩn dialog confirm chi tiết
+     * Author: TDNAM (06/10/2020)
+     * */
+    hideDialogConfirmDetail() {
+        $('.modal').hide();
+        $('.dialog-form-confirm').hide();
+        this.getData();
+        this.loadData();
+
+    }
+
+    /**
      * Refresh lại form dialog sau khi thêm, sửa thành công
      * Author: TDNAM (30/09/2020)
      * */
@@ -274,7 +305,7 @@ class BaseJS {
         var seft = this;
         //Lấy dữ liệu của khách hàng tương ứng đã chọn
         //1. Xác định khách hàng nào dã được chọn
-        var trSelected = $("#tbCustomer tr.row-selected");
+        var trSelected = $("table tr.row-selected");
         //2. Lấy thông tin theo mã khách hàng
         try {
             if (trSelected.length > 0) {
@@ -291,7 +322,8 @@ class BaseJS {
                 $.each(inputs, function (index, input) {
                     debugger
                     var fieldName = $(input).attr('fieldName');
-                    $(input).val(objId[fieldName]);
+                    
+                        $(input).val(objId[fieldName]);
                 })
                 //chỉnh sửa thông tin trên form
 
@@ -313,13 +345,21 @@ class BaseJS {
     /**
      * Viết hàm click vao button Xoa
      * Author: TDNAM (30/09/2020)
+     * Edit: TDNAM (06/10/2020) Cập nhật sự kiện btn delete mở ra form xác nhận xóa
      * TODO: Cần sửa lại
      * */
     btnDeleteOnClick() {
+        this.showDialogConfirmDetail();
+    }
+    /**
+     * Viết hàm Confirm người dùng có thật sự muốn xóa không
+     * Author: TDNAM (06/10/2020)
+     * */
+    btnConfirmDeleteOnClick() {
         var seft = this;
         //Lấy dữ liệu của khách hàng tương ứng đã chọn
         //1. Xác định khách hàng nào dã được chọn
-        var trSelected = $("#tbCustomer tr.row-selected");
+        var trSelected = $("table tr.row-selected");
         //2. Lấy thông tin theo mã khách hàng
         if (trSelected.length) {
             //Hiển thị form chi tiết:
@@ -327,11 +367,19 @@ class BaseJS {
             //3. Gọi api service để lấy dữ liệu chi tiết của khách hàng
             if (customerId) {
                 this.deleteData(customerId);
+                this.hideDialogConfirmDetail();
             }
         } else {
             alert('Bạn chưa chọn khách hàng nào, Vui lòng chọn để sửa');
         }
+    }
 
+    /**
+     * Viết hàm sự kiện người dùng ko muốn xóa đối tượng
+     * Author: TDNAM (06/10/2020)
+     * */
+    btnConfirmNotDeleteOnClick() {
+        this.hideDialogConfirmDetail();
     }
 
 }
