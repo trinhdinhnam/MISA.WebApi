@@ -310,6 +310,126 @@
 
         </div>
     </div>
+
+    <!-- Form Dialog Employee-->
+    <div class="dialog-employee-form">
+        <div class="dialog-employee-title">
+            <div class="dialog-employee-title-text">Nhân viên</div>
+            <div class="dialog-employee-title-icon">
+                <i class="fa fa-times-circle" style="color: #fff;"></i>
+            </div>
+
+        </div>
+        <div class="dialog-employee-content">
+            <div class="dialog-employee-content-main">
+                <div class="dialog-employee-content-main-top">
+                    <p class="info-general">Thông tin chung</p>
+                    <div class="dialog-employee-content-main-top-left">
+                        <div class="employee-id">
+                            <p class="employee-id-text">Mã nhân viên (*)</p>
+                            <input fieldName="EmployeeId" class="employee-id-input" id="txtEmployeeId" type="text" />
+                        </div>
+                        <div class="employee-name">
+                            <p class="employee-name-text">Tên nhân viên (*)</p>
+                            <input fieldName="EmployeeName" class="employee-name-input" id="txtEmployeeName" type="text" />
+                        </div>
+                        <div class="dateofbirth">
+                            <p class="dateofbirth-text">Ngày sinh</p>
+                            <input fieldName="DateOfBirth" class="dateofbirth-input" id="txtDateOfBirth" type="date" />
+                        </div>
+                        <div class="gender">
+                            <p class="gender-text">Giới tính</p>
+                            <select fieldName="Gender" class="gender-selected">
+                                <option value="1">Nam</option>
+                                <option value="0">Nữ</option>
+
+                            </select>
+                        </div>
+                        <div class="clear"></div>
+
+                        <div class="email">
+                            <p class="email-text">Email (*)</p>
+                            <input fieldName="Email" class="email-input" id="txtEmail" type="email" />
+                        </div>
+                        <div class="clear"></div>
+
+                        <div class="phone">
+                            <p class="phone-text">ĐT di động (*)</p>
+                            <input fieldName="Phone" class="phone-input" id="txtPhone" type="tel" />
+                        </div>
+                        <div class="clear"></div>
+
+                        <div class="identity-number">
+                            <p class="identity-number-text">Số CMT/HC</p>
+                            <input fieldName="IdentityNumber" class="identity-number-input" id="txtIdentityNumber" type="text" />
+                        </div>
+                        <div class="identity-date">
+                            <p class="identity-date-text">Ngày cấp</p>
+                            <input fieldName="IndentityDate" class="identity-date-input" id="txtIndentityDate" type="date" />
+                        </div>
+                    </div>
+                    <div class="dialog-employee-content-main-top-right">
+                        <div class="image-employee">
+
+                        </div>
+                        <div class="image-employee-define">
+                            <p>Chỉ được upload tệp</p>
+                            <p>.jpg, .jpeg, .png, .gif</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="dialog-employee-content-main-bottom">
+                    <div class="identity-place">
+                        <p class="identity-place-text">Nơi cấp CMND</p>
+                        <input fieldName="IdentityPlace" class="identity-place-input" id="txtIdentityPlace" type="text" />
+                    </div>
+                    <p class="info-work">Thông tin công việc</p>
+                    <div class="position">
+                        <p class="position-text">Vị trí</p>
+                        <select fieldName="PositionName" class="position-selected">
+                            <option value="1">Nhân viên</option>
+                            <option value="2">Trưởng phòng</option>
+                        </select>
+                    </div>
+                    <div class="department">
+                        <p class="department-text">Phòng ban</p>
+                        <select fieldName="DepartmentName" class="department-selected">
+                            <option value="1">Phòng nghiên cứu</option>
+                            <option value="2">Phòng nhân sự</option>
+                            <option value="3">Phòng đào tạo</option>
+                        </select>
+                    </div>
+                    <div class="tax-code">
+                        <p class="tax-code-text">Mã số thuế cn</p>
+                        <input fieldName="TaxCode" class="tax-code-input" id="txtTaxCode" type="text" />
+                    </div>
+                    <div class="salary">
+                        <p class="salary-text">Mức lương</p>
+                        <input fieldName="Salary" class="salary-input" id="txtSalary" type="text" placeholder="(VNĐ)" />
+                    </div>
+
+                    <div class="date-join">
+                        <p class="date-join-text">Ngày gia nhập</p>
+                        <input fieldName="DateJoin" class="date-join-input" id="txtDateJoin" type="date" />
+                    </div>
+                    <div class="work-status">
+                        <p class="work-status-text">Trạng thái</p>
+                        <select fieldName="WorkStatus" class="work-status-selected">
+                            <option value="1">Đang làm việc</option>
+                            <option value="2">Đã nghỉ làm</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="toolbar-employee-dialog">
+                    <button class="btn-help"><i class="icon-dialog icon-help-dialog"></i>Giúp</button>
+                    <button class="btn-store"><i class="icon-dialog icon-store-dialog"></i>Cất</button>
+                    <button class="btn-storeadd"><i class="icon-dialog icon-storeadd-dialog"></i>Cất & Thêm</button>
+                    <button class="btn-cancle"><i class="icon-dialog icon-cancle-dialog"></i>Hủy bỏ</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
     <script src="../../js/common/jquery-3.5.1.min.js"></script>
     <script src="../../js/common/common.js"></script>
     <script src="../../js/common/base.js"></script>
