@@ -85,7 +85,4 @@ var commonJS = {
     
 
 }
-Number.prototype.formatMoney = function () {
-    return this.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.");
-}
 

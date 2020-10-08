@@ -64,9 +64,7 @@ class BaseJS {
                         case 'Gender':
                             value = commonJS.formatGender(obj[fieldName]);
                             break;
-                        case 'DepartmentName':
-                            value = commonJS.formatDepartmentName(obj[fieldName]);
-                            break;
+                        
                         case 'WorkStatus':
                             value = commonJS.formatWorkStatus(obj[fieldName]);
                             break;

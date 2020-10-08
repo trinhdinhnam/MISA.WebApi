@@ -1,4 +1,4 @@
-﻿p{
+﻿.dialog-employee-form p {
     margin: 0;
 }
 /* Dialog title css*/
@@ -233,10 +233,10 @@
 
 /* Dialog Employee form css*/
 .dialog-employee-form {
-    /*    display: none;
-*/ position: absolute;
+        display: none;
+ position: absolute;
     width: 780px;
-    height: 540px;
+    height: 530px;
     background-color: #0973b9;
     /*margin-left: 380px;
     margin-top: 160px;*/
@@ -259,7 +259,7 @@
         }
 
         .dialog-employee-form .dialog-employee-title .dialog-employee-title-icon {
-            margin-left: 645px;
+            margin-left: 680px;
         }
 
             .dialog-employee-form .dialog-employee-title .dialog-employee-title-icon:hover {
@@ -480,12 +480,26 @@
     display: block;
     background-repeat: no-repeat;
     background-image: url('../../content/images/avatardefault.png');
-    width: 100px;
-    height: 160px;
+    width: 136px;
+    height: 140px;
     margin-right: 7px;
+    margin: auto;
 }
 
-.dialog-employee-content-main .dialog-employee-content-main-bottom {
+.dialog-employee-content-main-top-right .image-employee-define{
+    padding-left: 27px;
+}
+
+
+    .dialog-employee-content-main-top-right .image-employee-define .image-employee-define-top {
+        font-style: italic;
+    }
+
+    .dialog-employee-content-main-top-right .image-employee-define .image-employee-define-bottom {
+        font-style: italic;
+        font-weight: bold;
+    }
+    .dialog-employee-content-main .dialog-employee-content-main-bottom {
     width: 100%;
     height: 220px;
     padding-top: 10px;
@@ -660,7 +674,7 @@
 }
 
 .toolbar-employee-dialog .btn-help {
-    margin-right: 308px;
+    margin-right: 436px;
     margin-left: 5px;
 }
 
@@ -694,3 +708,7 @@
     .toolbar-employee-dialog .icon-dialog.icon-cancle-dialog {
         background-image: url('../../content/images/Disable16.png');
     }
+
+.toolbar-employee-dialog .btn-cancle{
+    margin-right: 0;
+}

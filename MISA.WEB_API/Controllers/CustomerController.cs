@@ -12,6 +12,10 @@ namespace MISA.WEB_API.Controllers
     public class CustomerController : ApiController
     {
         // GET: api/Customer/
+        /**
+         * Controller lấy ra danh sách khách hàng
+         * Author: TDNAM (05/10/2020)
+         * */
         [Route("")]
         public IEnumerable<Customer> Get()
         {
@@ -19,6 +23,10 @@ namespace MISA.WEB_API.Controllers
         }
 
         // GET: api/Customer/5
+        /**
+         * Controller lấy ra thông tin khách hàng theo mã khách hàng
+         * Author: TDNAM (05/10/2020)
+         * */
         [Route("{customerId}")]
         public object Get(string customerId)
         {
@@ -27,6 +35,10 @@ namespace MISA.WEB_API.Controllers
         }
 
         // POST: api/Customer
+        /**
+         * Controller thêm thông tin khách hàng
+         * Author: TDNAM (05/10/2020)
+         * */
         [Route("add")]
         public bool Post([FromBody]Customer customer)
         {
@@ -35,6 +47,10 @@ namespace MISA.WEB_API.Controllers
         }
 
         // PUT: api/Customer/5
+        /**
+         * Controller cập nhật thông tin khách hàng
+         * Author: TDNAM (05/10/2020)
+         * */
         [Route("edit")]
         public bool Put( [FromBody]Customer customer)
         { 
@@ -58,6 +74,10 @@ namespace MISA.WEB_API.Controllers
         }
 
         // DELETE: api/Customer/5
+        /**
+         * Controller xóa khách hàng theo mã khách hàng
+         * Author: TDNAM (05/10/2020)
+         * */
         [Route("delete/{customerId}")]
         public bool Delete(string customerId)
         {
